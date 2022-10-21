@@ -26,15 +26,22 @@ export class UsersContainerComponent implements OnInit {
               this.closeLoading();
             }
             this.users = [...users];
+            window.sessionStorage.setItem('users', JSON.stringify(this.users));
             this.setUserArray();
           },
           error: err => {
+            let provitionalInfo: string | any = window.sessionStorage.getItem('users');
+            this.users = JSON.parse(provitionalInfo);
+            this.setUserArray();
+            this.closeLoading();
+            alert('En estos momentos exiten problemas para conectar con el servidor, intentelo mas tarde')
             console.log(err)
           }
       })
   }
 
   setUserArray(){
+    debugger
     this.usersToRender = this.users.slice(this.page*this.rowPerPage,this.rowPerPage*(this.page + 1) )
 
   }
