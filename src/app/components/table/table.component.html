@@ -1,0 +1,37 @@
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>{{ "headerName" | translate }}</th>
+            <th>{{ "headerLastName" | translate }}</th>
+            <th>{{ "headerEmail" | translate }}</th>
+            <th>{{ "headerPhoneNumber" | translate }}</th>
+            <th>{{ "headerCc" | translate }}</th>
+            <th>{{ "headerActions" | translate }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users; let indexOfelement= index">
+            <td>{{ user.name }}</td>
+            <td>{{ user.lastName }}</td>    
+            <td>{{ user.email }}</td>
+            <td>{{ user.phoneNumber }}</td>
+            <td>{{ user.cc }}</td>
+            <td [style.width]="'200px'">
+                <div class="table__actions">
+                    <button class="error" (click)="openModalConfirmation(user)">{{ "deleteButton" | translate }}</button>
+                    <button class="success" (click)="openModal(user)">{{ "updateButton" | translate }}</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<app-form-modal 
+    [userSelected]="userForm" 
+    [userId]="userId" 
+    *ngIf="open" 
+    (closeEvent)="closeModal()"
+    (updateListEvent)="updateUserList($event)"
+></app-form-modal>
+<app-confirmation-form [user]="userToDelete" *ngIf="openConfirmation" (confirmEvent)="deleteUser($event)"></app-confirmation-form>
+<app-toast *ngIf="openToast" (closeEventToast)="closeToast()"></app-toast>
+<app-toast-error *ngIf="opentToastError" (closeEventToast)="closeToast()"></app-toast-error>

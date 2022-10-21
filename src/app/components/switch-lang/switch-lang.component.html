@@ -1,0 +1,17 @@
+<div class="switch_lang">
+    <img *ngIf="selectedLang.value === 'es'"  width="20px" height="20px" src="../../../assets/spain.png" alt='spain-flag'/>
+    <img *ngIf="selectedLang.value === 'en'"  width="20px" height="20px" src="../../../assets/usa.png" alt='usa-flag'/>
+    <span>{{ "language" | translate }}</span>
+    <select
+        #selectedLang
+        (change)="switchLang(selectedLang.value)"
+    >
+        <option *ngFor="let language of translate.getLangs()"
+            [value]="language"
+            [selected]="language === translate.currentLang"
+        >
+        {{ language }}
+        </option>
+    </select>
+</div>
+    

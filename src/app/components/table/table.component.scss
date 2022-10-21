@@ -1,0 +1,110 @@
+table {
+    width: 100%;
+    margin-top: 30px;
+
+    tr {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #009879;
+    }
+
+    thead {
+        display: none;
+    }
+}
+
+.styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+        div{
+            width: 90%;
+            display: flex;
+            justify-content: space-around   ;
+            flex-direction: row;
+            margin: auto;
+        }
+        button {
+            margin: 2px;
+        }
+    }
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #aca4a4;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:nth-of-type(odd) {
+    background-color: #baafaf;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+button {
+    margin: 5px;
+    border: none;
+    min-width: 85px;
+    min-height: 30px;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    cursor:pointer;
+}
+.success {
+    background-color: #2e7d32;
+}
+.error {
+    background-color: #d32f2f;
+}
+
+@media screen and (min-width:1024px) {
+    table {
+        margin-left: 50px;
+        width: 80%;
+        margin-top: 30px;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    table {
+        width: 100%;
+        margin: 0px;
+        display: table;
+        top:0;
+        thead {
+            display: table-header-group;
+        }
+        tr {
+            display:table-row;
+            border: none;
+        }
+    }
+    .styled-table tbody tr:nth-of-type(odd) {
+        background-color: transparent;
+    }
+    .styled-table {
+        border-collapse: collapse;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+    
+    .styled-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: center;
+    }
+    
+}
+
+@media screen and (min-width:1700px) {
+    table{
+        width:1200px;
+        font-size: 40px;
+    } 
+}
