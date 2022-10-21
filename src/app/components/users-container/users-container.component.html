@@ -1,0 +1,16 @@
+<div>
+    <h1 class="app__title">{{ "title" | translate }}</h1>
+    <div class="users__container">
+        <app-user-form [widthStyle]="'200px'" [isModal]="false"  [title]="title" (newItemEvent)="addUser($event)"></app-user-form>
+        <div class="users__data">
+            <app-spinner *ngIf="showLoading"></app-spinner>
+            <app-table *ngIf="!showLoading" 
+                [users]="usersToRender" 
+                (updateEvent)="updateUsersUpdated($event)"
+                (deleteEvent)="updateUsersDeleted($event)"
+                >
+            </app-table>
+            <app-pagination *ngIf="users.length > 0" [pageNumber]="page" [users]="users" (pageEvent)="updatePage($event)"></app-pagination>
+        </div>
+    </div>
+</div>

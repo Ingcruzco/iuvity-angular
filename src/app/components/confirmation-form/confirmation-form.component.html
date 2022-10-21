@@ -1,0 +1,7 @@
+<div class="modal__container">
+    <div class="modal__form">
+        <h2>{{ "deleteConfirmation" | translate }} {{ user?.name }} {{ user?.lastName }}?</h2>
+        <button class="success" (click)="abortDelete()">{{ "no" | translate }}</button>
+        <button class="error" (click)="confirmDelete()">{{ "yes" | translate }}</button>
+    </div>
+</div>

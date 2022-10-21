@@ -1,0 +1,48 @@
+<form [formGroup]="userForm" class="form__user" [style.width]="widthStyle"  (ngSubmit)="addUser()">
+    <h2>{{ "formTitle" | translate }}</h2>
+    <input type="text" formControlName="name" placeholder="{{ 'namePlaceHolder' | translate }}" />
+    <div class="alert-danger" *ngIf="name?.invalid && (name?.dirty || name?.touched)" >
+        <div class="container-error-message" *ngIf="name?.errors?.['required']">
+            {{ "nameRequired" | translate }}
+        </div>
+    </div>
+    <input type="text" formControlName="lastName" placeholder="{{ 'lastNamePlaceHolder' | translate }}" />
+    <div class="alert-danger" *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)">
+        <div class="container-error-message" *ngIf="lastName?.errors?.['required']">
+            {{ "lastNameRequired" | translate }}
+        </div>
+    </div>
+    <input type="email" formControlName="email" placeholder="{{ 'emailPlaceHolder' | translate }}" />
+    <div class="alert-danger" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+        <div class="container-error-message" *ngIf="email?.errors?.['pattern']">
+            {{ "emailInvalid" | translate }}
+        </div>
+        <div class="container-error-message" *ngIf="email?.errors?.['required']">
+            {{ "emailRequired" | translate }}
+        </div>
+    </div>
+    <input type="number" formControlName="phoneNumber"  placeholder="{{ 'phoneNumberPlaceHolder' | translate }}"  />
+    <div class="alert-danger" *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)">
+        <div class="container-error-message" *ngIf="phoneNumber?.errors?.['required']">
+            {{ "phoneRequired" | translate }}
+        </div>
+        <div class="container-error-message" *ngIf="phoneNumber?.errors?.['minlength'] || phoneNumber?.errors?.['maxlength']">
+            {{ "phoneLengthInvalid" | translate }}
+        </div>
+    </div>
+    <input type="number" formControlName="cc" placeholder="{{ 'ccPlaceHolder' | translate }}" />
+    <div class="alert-danger" *ngIf="cc?.invalid && (cc?.dirty || cc?.touched)">
+        <div class="container-error-message" *ngIf="cc?.errors?.['required']">
+            {{ "idRequired" | translate }}
+        </div>
+        <div class="container-error-message" *ngIf="cc?.errors?.['minlength'] || cc?.errors?.['maxlength']" >
+            {{ "idLengthInvalid" | translate }}
+        </div>
+    </div>
+    <div class="form_actions">
+        <button [class]="userForm.valid ?'success':'disabled'" type="submit" [disabled]="!userForm.valid">{{ 'inserButton' | translate }}</button>
+    </div>
+    
+</form>
+<app-toast *ngIf="openToast" (closeEventToast)="closeToast()"></app-toast>
+<app-toast-error *ngIf="opentToastError" (closeEventToast)="closeToast()"></app-toast-error>

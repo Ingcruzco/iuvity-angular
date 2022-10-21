@@ -1,0 +1,18 @@
+.header__hamburguer{
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+    div {
+    width: 35px;
+    height: 5px;
+    background-color: #26D07C;
+    margin: 6px 0;
+    }
+}
+
+@media  screen and (min-width: 1025px) {
+    .header__hamburguer{
+        display: none;
+    }
+}
